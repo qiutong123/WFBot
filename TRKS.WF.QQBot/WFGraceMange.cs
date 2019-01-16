@@ -70,16 +70,17 @@ namespace TRKS.WF.QQBot
                 Messenger.SendGroup(group, msg);
                 return;
             }
+            str = str.ToLower();
             int count = 0;
             msg = $"以下是物品{str}的翻译结果\n\n";
             foreach(var dict in dicts)
             {
-                if(dict.Zh.IndexOf(str) >= 0)
+                if(dict.Zh.ToLower().IndexOf(str) >= 0)
                 {
                     msg += dict.Zh + "  |==|  " + dict.En + "\n";
                     count++;
                 }
-                if (dict.En.IndexOf(str) >= 0)
+                if (dict.En.ToLower().IndexOf(str) >= 0)
                 {
                     msg += dict.En + "  |==|  " + dict.Zh + "\n";
                     count++;
